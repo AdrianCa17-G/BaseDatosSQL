@@ -1,11 +1,19 @@
 # Sistema de Gestión de Estudiantes - CRUD con Java y SQLite
+Taller Grupal
+## Equipo de Desarrollo
 
-Aplicación de consola desarrollada en Java que implementa un sistema CRUD (Crear, Leer, Actualizar, Eliminar) para la gestión de estudiantes matriculados, utilizando SQLite como motor de base de datos y aplicando los principios de Programación Orientada a Objetos.
+| Integrante | Rol |
+|------------|-----|
+| Anthony Godoy | Creacion base de datos|
+| Adrian Guaman | Documentación del sistema |
+| Daniel Vargas | Desarrollo del código fuente |
 
+---
 ## Objetivo
 
 Desarrollar una aplicación en Java que implemente los principios de Programación Orientada a Objetos y permita gestionar información utilizando una base de datos SQLite mediante operaciones CRUD.
 
+---
 ## Caso de estudio
 
 Una institución educativa necesita administrar los estudiantes matriculados. Cada estudiante posee la siguiente información:
@@ -17,6 +25,8 @@ Una institución educativa necesita administrar los estudiantes matriculados. Ca
 - Correo electrónico
 - Carrera
 - Semestre
+  
+---
 
 ## Tecnologías utilizadas
 
@@ -24,10 +34,13 @@ Una institución educativa necesita administrar los estudiantes matriculados. Ca
 - **Base de datos:** SQLite
 - **Driver JDBC:** sqlite-jdbc
 - **IDE:** NetBeans
+  
+---
 
 ## Estructura del proyecto
 
 El proyecto está organizado en 4 paquetes, siguiendo el patrón de separación por capas:
+
 | Paquete | Responsabilidad |
 |---|---|
 | `modelo` | Contiene la clase `Estudiante`, representa el objeto de negocio (atributos, constructores, getters/setters). |
@@ -35,7 +48,11 @@ El proyecto está organizado en 4 paquetes, siguiendo el patrón de separación 
 | `dao` | Contiene la clase `EstudianteDAO`, implementa el patrón DAO (Data Access Object) con toda la lógica SQL de las operaciones CRUD. |
 | `main` | Contiene la clase `Main`, gestiona el menú interactivo y la comunicación con el usuario. |
 
+---
+
 ## Diseño del proyecto
+
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Clases/Paquetes.png" alt="Texto alternativo" width="250"/>
 
 El diseño sigue una arquitectura en capas para separar responsabilidades:
 
@@ -50,6 +67,12 @@ Esta separación permite que cada clase tenga una única responsabilidad y facil
 
 ### `Estudiante` (modelo)
 
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Clases/Estudiante.png" alt="Texto alternativo"  height="700" />
+
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Clases/Estudiante2.png" alt="Texto alternativo" width="400"/>
+
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Clases/Estudiante3.png" alt="Texto alternativo" width="500"/>
+
 Representa a un estudiante matriculado. Contiene:
 
 - Atributos privados: `id`, `cedula`, `nombres`, `apellidos`, `correo`, `carrera`, `semestre`.
@@ -61,9 +84,22 @@ Representa a un estudiante matriculado. Contiene:
 
 ### `ConexionSQLite` (conexion)
 
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Clases/Conexion.png" alt="Texto alternativo"  height="700" />
+
 Clase encargada de establecer la conexión JDBC con la base de datos `universidad.db` mediante el método estático `conectar()`.
 
 ### `EstudianteDAO` (dao)
+
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Clases/DAO.png" alt="Texto alternativo"  height="500" />
+
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Clases/DAO2.png" alt="Texto alternativo"  height="500" />
+
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Clases/DAO3.png" alt="Texto alternativo"  height="500" />
+
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Clases/DAO4.png" alt="Texto alternativo"  height="500" />
+
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Clases/DAO5.png" alt="Texto alternativo"  height="500" />
+
 
 Implementa el patrón DAO con los siguientes métodos:
 
@@ -79,6 +115,15 @@ Implementa el patrón DAO con los siguientes métodos:
 ### `Main` (main)
 
 Contiene el menú principal del sistema y los métodos privados para registrar, listar, buscar, actualizar y eliminar estudiantes, comunicándose con `EstudianteDAO`.
+
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Clases/Principal.png" alt="Texto alternativo"  height="500" />
+
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Clases/Principal2.png" alt="Texto alternativo"  height="500" />
+
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Clases/Principal3.png" alt="Texto alternativo"  height="500" />
+
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Clases/Principal4.png" alt="Texto alternativo"  height="500" />
+
 
 ## Base de datos
 
@@ -99,6 +144,10 @@ CREATE TABLE estudiante (
 
 La tabla se crea automáticamente al ejecutar el programa mediante el método `crearTabla()` del DAO.
 
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/BaseDatos.png" alt="Texto alternativo"  height="500" />
+
+---
+
 ## Principios POO aplicados
 
 -  **Encapsulamiento:** atributos privados en `Estudiante`, accesibles solo mediante getters y setters.
@@ -109,5 +158,41 @@ La tabla se crea automáticamente al ejecutar el programa mediante el método `c
 -  **Colecciones:** uso de `ArrayList<Estudiante>` en el método `listar()`.
 -  **Patrón DAO:** separación de la lógica de acceso a datos en `EstudianteDAO`.
 -  **Separación por paquetes:** `modelo`, `conexion`, `dao` y `main`.
+  
+---
 
 ## Menú y ejecución del sistema
+
+### Menú
+
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Menu_Presentacion/Menu.png" alt="Texto alternativo"  height="700" />
+
+### Registrar estudiante
+
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Menu_Presentacion/Opcion1.png" alt="Texto alternativo"  height="700" />
+
+### Listar estudiantes
+
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Menu_Presentacion/Opcion2.png" alt="Texto alternativo"  height="700" />
+
+### Buscar estudiantes
+
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Menu_Presentacion/Opcion3.png" alt="Texto alternativo"  height="700" />
+
+### Actualizar estudiantes
+
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Menu_Presentacion/Opcion4.png" alt="Texto alternativo"  height="700" />
+
+### Eliminar estudiantes
+
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Menu_Presentacion/Opcion5.png" alt="Texto alternativo"  height="700" />
+
+### Salir
+
+<img src="https://github.com/AdrianCa17-G/BaseDatosSQL/blob/main/Menu_Presentacion/Opcion6.png" alt="Texto alternativo"  height="700" />
+
+---
+
+> Proyecto desarrollado con fines académicos — Programación Orientada a Objetos
+> UTPL | Ingeniería en Ciencias de la Computación
+
